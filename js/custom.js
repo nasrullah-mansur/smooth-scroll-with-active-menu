@@ -20,10 +20,12 @@ $(document).ready(function() {
     function activeNavLink() {
         let scrollFromTop = $(this).scrollTop();
         MENU_INFO.navLink.each(function(e) {
-            let sectionOffset = $(this.hash).offset().top;
-            if(sectionOffset <= scrollFromTop + MENU_INFO.offsetTop) {
-                $(this).parent().addClass(MENU_INFO.activeClassName);
-                $(this).parent().siblings().removeClass(MENU_INFO.activeClassName);
+            if($(this.hash).offset()) {
+                let sectionOffset = $(this.hash).offset().top;
+                if(sectionOffset <= scrollFromTop + MENU_INFO.offsetTop) {
+                    $(this).parent().addClass(MENU_INFO.activeClassName);
+                    $(this).parent().siblings().removeClass(MENU_INFO.activeClassName);
+                }
             }
         });
     } activeNavLink();
